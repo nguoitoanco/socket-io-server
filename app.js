@@ -52,15 +52,15 @@ io.on("connection", socket => {
 
 const getApiAndEmit = async socket => {
     try {
-        const res = await axios.get(
-            "https://api.darksky.net/forecast/PUT_YOUR_API_KEY_HERE/43.7695,11.2558"
-        );
-        socket.emit("FromAPI", res.data.currently.temperature);
+        // const res = await axios.get(
+        //     "https://api.darksky.net/forecast/PUT_YOUR_API_KEY_HERE/43.7695,11.2558"
+        // );
+        let tempu = Math.floor(Math.random() * 1000) + 1;
+        socket.emit("FromAPI", {response: tempu});
     } catch (error) {
         console.error(`Error: ${error.code}`);
     }
 };
 server.listen(port, () => console.log('Listening on port ${port}'));
-
 
 module.exports = app;
